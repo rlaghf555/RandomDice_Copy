@@ -119,7 +119,7 @@ public class DiceDot : MonoBehaviour
                                 continue;
                             if (highestHealth <= e.health)
                             {
-                                Debug.Log(e);
+                                //Debug.Log(e);
 
                                 highestHealth = e.health;
                             }
@@ -198,7 +198,7 @@ public class DiceDot : MonoBehaviour
                                 continue;
                             if (highestHealth <= e.health)
                             {
-                                Debug.Log(e);
+                               // Debug.Log(e);
 
                                 highestHealth = e.health;
                             }

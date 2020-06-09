@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 public class AttackDot : MonoBehaviour
 {
+    [HideInInspector]
     public Transform target;
     public int attack = 0;
+    public Transform bursteffect;
     private DICETYPE type;
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,23 @@ public class AttackDot : MonoBehaviour
         {
             switch (type){
                 case DICETYPE.FIRE:
+                    Transform newobject = Instantiate(bursteffect, transform.position, Quaternion.identity);
+                    newobject.localScale = new Vector3(20, 20, 1);
+                    Destroy(newobject.gameObject, 0.5f);
+                    Collider[] objects=  Physics.OverlapSphere(transform.position, 50);
+                    foreach(Collider c in objects)
+                    {
 
+                        if (c.gameObject.GetComponent<Enemy>())
+                        {
+                            c.gameObject.GetComponent<Enemy>().health -= attack;
+                          // Debug.Log(c.name+"EnemySplash");
+                          // if (c.gameObject.GetComponent<Boss_Knight>())
+                          //     Debug.Log(c.name + "BossSplash");
+
+                        }
+                       
+                    }
                     break;
                 case DICETYPE.POISON:             
                     if(target.gameObject.GetComponent<Poisoned>()==null)

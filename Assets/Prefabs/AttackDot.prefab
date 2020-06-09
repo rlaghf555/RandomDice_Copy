@@ -87,3 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a3c20039f5bfe49bdb1538a0ac7b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  attack: 0
+  bursteffect: {fileID: 5110079620796842138, guid: 5826562e6bcbdb441ab28b40b026432c,
+    type: 3}
