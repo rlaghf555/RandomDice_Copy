@@ -145,11 +145,19 @@ public class DiceDot : MonoBehaviour
                         Enemy[] enemies = FindObjectsOfType<Enemy>();
                         if (enemies.Length == 0)
                             break;
-                        Enemy e = enemies[Random.Range(0, enemies.Length - 1)];
-
+                        List<Enemy> l_enemies = new List<Enemy>();
+                        foreach (Enemy e in enemies)
+                        {
+                            if (e.flag == 2)
+                                continue;
+                            l_enemies.Add(e);
+                           
+                        }
+                        if (l_enemies.Count == 0) break;
+                        Enemy target = l_enemies[Random.Range(0, l_enemies.Count)];
                         Transform tmp = Instantiate(attackDotPrefab, transform.position, Quaternion.identity);
                         tmp.SetParent(gameObject.transform);
-                        tmp.GetComponent<AttackDot>().SetDot(attack, image.color, e.transform);
+                        tmp.GetComponent<AttackDot>().SetDot(attack, image.color, target.transform);
                     }
                     break;
             }
@@ -224,11 +232,18 @@ public class DiceDot : MonoBehaviour
                         Enemy[] enemies = FindObjectsOfType<Enemy>();
                         if (enemies.Length == 0)
                             break;
-                        Enemy e = enemies[Random.Range(0, enemies.Length - 1)];
+                        List<Enemy> l_enemies = new List<Enemy>();
+                        foreach (Enemy e in enemies)
+                        {
+                            if (e.flag == 1)
+                                continue;
+                            l_enemies.Add(e);
 
+                        }
+                        Enemy target = l_enemies[Random.Range(0, l_enemies.Count)];
                         Transform tmp = Instantiate(attackDotPrefab, transform.position, Quaternion.identity);
                         tmp.SetParent(gameObject.transform);
-                        tmp.GetComponent<AttackDot>().SetDot(attack, image.color, e.transform);
+                        tmp.GetComponent<AttackDot>().SetDot(attack, image.color, target.transform);
                     }
                     break;
             }

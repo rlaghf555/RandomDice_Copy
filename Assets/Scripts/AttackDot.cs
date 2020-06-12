@@ -62,6 +62,22 @@ public class AttackDot : MonoBehaviour
                     break;
                 case DICETYPE.THUNDER:
                     short flag= target.GetComponent<Enemy>().flag;
+
+                    Enemy[] tmp_enemies = FindObjectsOfType<Enemy>();
+                    List<Enemy> l_enemies = new List<Enemy>();
+                    foreach(Enemy enemy in tmp_enemies)
+                    {
+                        if (enemy.flag == flag)
+                            l_enemies.Add(enemy);
+                    }
+                    l_enemies.Sort(delegate (Enemy a, Enemy b) { return a.movedDistance.CompareTo(b.movedDistance); });
+                    for(int i = 0; i < l_enemies.Count; i++)
+                    {
+                        l_enemies[i].health -= attack;
+                        Debug.Log("Thunder damage");
+                        if (i == 2)
+                            break;
+                    }
                     break;
             }
 

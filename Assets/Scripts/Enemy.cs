@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour
         health = gamecontroller.EnemyHealth;
        // healthText = GetComponent<Text>();
     }
-
     // Update is called once per frame
     void Update() 
     {
